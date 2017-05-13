@@ -106,3 +106,62 @@ console.log(reverseArrayInPlace(range(-5, 5)));
 console.log(reverseArrayInPlace([]));
 console.log(reverseArrayInPlace([0]));
 console.log(reverseArrayInPlace([0, 1]));
+
+// A list
+
+function prepend(list, value) {
+  return {
+    "value": value,
+    "rest": list
+  }
+}
+
+function nth(list, n) {
+  while (n > 0 && list !== undefined) {
+    list = list.rest;
+    n--;
+  }
+  return list ? list.value : undefined;
+}
+
+function arrayToList(arr) {
+  let list = undefined;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    list = prepend(list, arr[i]);
+  }
+  return list;
+}
+
+function listToArray(list) {
+  let arr = [];
+  let value, i = 0;
+  while (value = nth(list, i)) {
+    arr.push(value);
+    i++;
+  }
+  return arr;
+}
+
+let list = {
+  "value": Math.random(),
+  "rest": undefined
+};
+for (let i = 0; i < 10; i++) {
+  list = prepend(list, Math.random());
+}
+console.log(list);
+
+console.log(nth(list, 2));
+console.log(nth({}, 2)); // → undefined
+
+console.log(arrayToList([]));
+console.log(arrayToList([0]));
+console.log(arrayToList([0, 1]));
+console.log(arrayToList([0, 1, 2]));
+console.log(arrayToList([0, 1, 2, 3]));
+
+console.log(listToArray(list));
+console.log(listToArray({
+  "value": Math.random(),
+  "rest": undefined
+}));

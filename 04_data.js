@@ -9,13 +9,13 @@ function range(start, end) {
   if (arguments.length === 3) {
     inc = arguments[2];
     if (inc === 0) {
-      throw "increment cannot be 0"
+      throw "increment cannot be 0";
     }
     if (start < end && inc < 0) {
-      throw `start:${start} < end:${end} with negative increment`
+      throw `start:${start} < end:${end} with negative increment`;
     }
     if (start > end && inc > 0) {
-      throw `start:${start} > end:${end} with positive increment`
+      throw `start:${start} > end:${end} with positive increment`;
     }
   } else {
     inc = start < end ? 1 : -1;
@@ -113,7 +113,7 @@ function prepend(value, list) {
   return {
     "value": value,
     "rest": list
-  }
+  };
 }
 
 console.log("prepend");

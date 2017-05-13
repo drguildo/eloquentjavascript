@@ -1,6 +1,4 @@
 function range(start, end) {
-  console.log(arguments);
-
   if (start === end) {
     return [start];
   }
@@ -41,6 +39,7 @@ function sum(nums) {
   return nums.reduce((a, b) => a + b);
 }
 
+console.log("range");
 console.log(range(0, 10));
 console.log(range(10, 0));
 console.log(range(-5, 5));
@@ -72,6 +71,7 @@ function reverseArray(arr) {
   return newArr;
 }
 
+console.log("reverseArray");
 console.log(reverseArray(range(0, 10)));
 console.log(reverseArray(range(0, -10)));
 console.log(reverseArray(range(5, -5)));
@@ -94,6 +94,7 @@ function reverseArrayInPlace(arr) {
   return arr;
 }
 
+console.log("reverseArrayInPlace");
 console.log(reverseArrayInPlace(range(0, 10)));
 console.log(reverseArrayInPlace(range(0, -10)));
 console.log(reverseArrayInPlace(range(5, -5)));

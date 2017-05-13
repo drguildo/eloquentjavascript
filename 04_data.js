@@ -1,3 +1,5 @@
+// The sum of a range
+
 function range(start, end) {
   if (start === end) {
     return [start];
@@ -62,6 +64,8 @@ console.log(range(10, 0, -3));
 
 console.log(sum(range(1, 10)));
 console.log(sum(range(10, 1)));
+
+// Reversing an array
 
 function reverseArray(arr) {
   let newArr = [];

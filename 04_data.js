@@ -62,3 +62,42 @@ console.log(range(10, 0, -3));
 // console.log(range(0, 10, 0));
 
 console.log(sum(range(1, 10)));
+console.log(sum(range(10, 1)));
+
+function reverseArray(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.unshift(arr[i]);
+  }
+  return newArr;
+}
+
+console.log(reverseArray(range(0, 10)));
+console.log(reverseArray(range(0, -10)));
+console.log(reverseArray(range(5, -5)));
+console.log(reverseArray(range(-5, 5)));
+console.log(reverseArray([]));
+console.log(reverseArray([0]));
+console.log(reverseArray([0, 1]));
+
+function reverseArrayInPlace(arr) {
+  if (arr.length < 2) {
+    return arr;
+  }
+
+  for (let front = 0, back = arr.length - 1; front < back; front++, back--) {
+    let tmp = arr[front];
+    arr[front] = arr[back];
+    arr[back] = tmp;
+  }
+
+  return arr;
+}
+
+console.log(reverseArrayInPlace(range(0, 10)));
+console.log(reverseArrayInPlace(range(0, -10)));
+console.log(reverseArrayInPlace(range(5, -5)));
+console.log(reverseArrayInPlace(range(-5, 5)));
+console.log(reverseArrayInPlace([]));
+console.log(reverseArrayInPlace([0]));
+console.log(reverseArrayInPlace([0, 1]));

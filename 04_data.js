@@ -116,6 +116,16 @@ function prepend(value, list) {
   }
 }
 
+console.log("prepend");
+let list = {
+  "value": Math.random(),
+  "rest": null
+};
+for (let i = 0; i < 10; i++) {
+  list = prepend(Math.random(), list);
+}
+console.log(list);
+
 function nth(list, n) {
   while (n > 0 && list) {
     list = list.rest;
@@ -124,6 +134,10 @@ function nth(list, n) {
   return list ? list.value : undefined;
 }
 
+console.log("nth");
+console.log(nth(list, 2));
+console.log(nth({}, 2)); // → undefined
+
 function arrayToList(arr) {
   let list = null;
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -131,6 +145,13 @@ function arrayToList(arr) {
   }
   return list;
 }
+
+console.log("arrayToList");
+console.log(arrayToList([]));
+console.log(arrayToList([0]));
+console.log(arrayToList([0, 1]));
+console.log(arrayToList([0, 1, 2]));
+console.log(arrayToList([0, 1, 2, 3]));
 
 function listToArray(list) {
   let arr = [];
@@ -142,24 +163,7 @@ function listToArray(list) {
   return arr;
 }
 
-let list = {
-  "value": Math.random(),
-  "rest": null
-};
-for (let i = 0; i < 10; i++) {
-  list = prepend(Math.random(), list);
-}
-console.log(list);
-
-console.log(nth(list, 2));
-console.log(nth({}, 2)); // → undefined
-
-console.log(arrayToList([]));
-console.log(arrayToList([0]));
-console.log(arrayToList([0, 1]));
-console.log(arrayToList([0, 1, 2]));
-console.log(arrayToList([0, 1, 2, 3]));
-
+console.log("listToArray");
 console.log(listToArray(list));
 console.log(listToArray({
   "value": Math.random(),

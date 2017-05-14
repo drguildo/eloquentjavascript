@@ -41,7 +41,7 @@ function sum(nums) {
   return nums.reduce((a, b) => a + b);
 }
 
-console.log("range");
+console.log("Testing range...");
 console.log(range(0, 10));
 console.log(range(10, 0));
 console.log(range(-5, 5));
@@ -75,7 +75,7 @@ function reverseArray(arr) {
   return newArr;
 }
 
-console.log("reverseArray");
+console.log("Testing reverseArray...");
 console.log(reverseArray(range(0, 10)));
 console.log(reverseArray(range(0, -10)));
 console.log(reverseArray(range(5, -5)));
@@ -98,7 +98,7 @@ function reverseArrayInPlace(arr) {
   return arr;
 }
 
-console.log("reverseArrayInPlace");
+console.log("Testing reverseArrayInPlace...");
 console.log(reverseArrayInPlace(range(0, 10)));
 console.log(reverseArrayInPlace(range(0, -10)));
 console.log(reverseArrayInPlace(range(5, -5)));
@@ -116,7 +116,7 @@ function prepend(value, list) {
   };
 }
 
-console.log("prepend");
+console.log("Testing prepend...");
 let list = {
   "value": Math.random(),
   "rest": null
@@ -134,7 +134,7 @@ function nth(list, n) {
   return list ? list.value : undefined;
 }
 
-console.log("nth");
+console.log("Testing nth...");
 console.log(nth(list, 2));
 console.log(nth({}, 2)); // → undefined
 
@@ -146,7 +146,7 @@ function arrayToList(arr) {
   return list;
 }
 
-console.log("arrayToList");
+console.log("Testing arrayToList...");
 console.log(arrayToList([]));
 console.log(arrayToList([0]));
 console.log(arrayToList([0, 1]));
@@ -163,7 +163,7 @@ function listToArray(list) {
   return arr;
 }
 
-console.log("listToArray");
+console.log("Testing listToArray...");
 console.log(listToArray(list));
 console.log(listToArray({
   "value": Math.random(),

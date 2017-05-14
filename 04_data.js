@@ -178,3 +178,83 @@ console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(nth(arrayToList([10, 20, 30]), 1));
 // → 20
+
+function recursive_nth(node, n) {
+  if (node) {
+    if (n > 0) {
+      return recursive_nth(node.rest, n - 1);
+    } else {
+      return node.value;
+    }
+  } else {
+    return undefined;
+  }
+}
+
+console.log(recursive_nth(list, 0));
+console.log(recursive_nth(list, 1));
+console.log(recursive_nth(list, 2));
+console.log(recursive_nth(list, 999)); // → undefined
+
+// Deep comparison
+
+function deepEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+
+  if ((typeof a !== "object") || (typeof b !== "object")) {
+    return a === b;
+  }
+
+  // null values are considered objects so we need to do this otherwise
+  // we'll try to iterate over a and b and cause a null dereference.
+  if (a === null || b === null) {
+    return a === b;
+  }
+
+  let keys = Array.from(new Set(Object.keys(a).concat(Object.keys(b))));
+  for (var i = 0; i < keys.length; i++) {
+    let k = keys[i];
+    if (!deepEqual(a[k], b[k])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+let a = {
+  a: 1,
+  b: "foo",
+  5: [1, 2, 3, 4]
+};
+
+let b = {
+  a: 1,
+  b: "foo",
+  5: [1, 2, 3, 4, "NOPE"]
+};
+
+console.log("Testing deepEqual...");
+console.assert(deepEqual(0, 0));
+console.assert(deepEqual(null, null));
+console.assert(deepEqual(undefined, undefined));
+console.assert(deepEqual({}, {}));
+console.assert(deepEqual([], []));
+console.assert(deepEqual({
+  a: 1,
+  b: 2
+}, {
+  a: 1,
+  b: 2
+}));
+
+console.assert(!deepEqual(0, 1));
+console.assert(!deepEqual(null, undefined));
+console.assert(!deepEqual([], 0));
+console.assert(!deepEqual([0], {
+  0: 1
+}));
+// console.assert(!deepEqual([], {}));
+console.assert(!deepEqual(a, b));;

@@ -139,3 +139,52 @@ console.log(sc.minHeight());
 // → 2
 console.log(sc.draw(3, 2));
 // → ["abc", "   "]
+
+// Sequence interface
+
+function ArraySeq(arr) {
+  this.arr = arr;
+  this.cur = 0;
+}
+ArraySeq.prototype.hasNext = function () {
+  return this.cur < this.arr.length;
+};
+ArraySeq.prototype.next = function () {
+  if (this.hasNext()) {
+    return this.arr[this.cur++];
+  }
+  return undefined;
+};
+
+function RangeSeq(from, to) {
+  this.from = from;
+  this.to = to;
+  this.cur = from;
+}
+RangeSeq.prototype.hasNext = function () {
+  return this.cur < this.to;
+};
+RangeSeq.prototype.next = function () {
+  if (this.hasNext()) {
+    return this.cur++;
+  }
+  return undefined;
+};
+
+function logFive(seq) {
+  let i = 0;
+  while (i < 5 && seq.hasNext()) {
+    console.log(seq.next());
+    i++;
+  }
+}
+
+logFive(new ArraySeq([1, 2]));
+// → 1
+// → 2
+logFive(new RangeSeq(100, 1000));
+// → 100
+// → 101
+// → 102
+// → 103
+// → 104
